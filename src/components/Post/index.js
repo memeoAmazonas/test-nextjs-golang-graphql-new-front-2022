@@ -17,7 +17,7 @@ import {CREATE_LIKE} from "../../graphql/query/like";
 import {LOCAL_POST} from "../../graphql/query/post";
 import client from "../../graphql/client";
 
-const Post = ({author, title, body, id, quantity, name, userId, likes}) => {
+export default function Post({author, title, body, id, quantity, name, userId, likes}){
 
     const [getComment, {data, loading}] = useLazyQuery(GET_COMMENT_BY_ID, {
         fetchPolicy: "network-only",
@@ -117,5 +117,3 @@ const Post = ({author, title, body, id, quantity, name, userId, likes}) => {
         </Card>
     );
 }
-
-export default Post;

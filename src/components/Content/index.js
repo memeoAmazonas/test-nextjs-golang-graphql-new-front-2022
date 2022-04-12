@@ -3,7 +3,8 @@ import Header from "components/Header";
 import * as React from "react";
 import Head from "next/head";
 
-const Content = ({ children }) => (
+export default function Content({ children }){
+    return(
         <Box sx={{flexGrow: 1, bgcolor:"#98d58b"}}>
             <Head>
                 <title>Marawaka</title>
@@ -19,4 +20,4 @@ const Content = ({ children }) => (
             </Container>
         </Box>
     );
-export default Content;
+}

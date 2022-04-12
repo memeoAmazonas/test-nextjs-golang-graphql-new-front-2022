@@ -5,7 +5,7 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import ShareIcon from '@mui/icons-material/Share';
 
-const Buttons = ({onFocus, likes, onLike}) => {
+export default function Buttons({onFocus, likes, onLike}){
     return (
         <Stack sx={{pb: 1}}>
             <Divider color="primary" sx={{mb: 1}}/>
@@ -31,4 +31,3 @@ const Buttons = ({onFocus, likes, onLike}) => {
     );
 };
 
-export default Buttons;

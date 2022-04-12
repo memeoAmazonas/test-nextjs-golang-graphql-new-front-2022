@@ -1,7 +1,7 @@
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 
-function Toast({ open=false, message, severity = 'success' }) {
+export default function Toast({ open=false, message, severity = 'success' }) {
     return (
         <Snackbar
             anchorOrigin={{
@@ -17,4 +17,4 @@ function Toast({ open=false, message, severity = 'success' }) {
     );
 }
 
-export default Toast;
+

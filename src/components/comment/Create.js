@@ -17,7 +17,7 @@ const BoxComment = styled(TextField)({
         },
     },
 );
-const Create = ({onCreate, focus = false, placeholder = ""}) => {
+export default function Create({onCreate, focus = false, placeholder = ""}){
 
     const ref = React.useRef(null)
     React.useEffect(() => {
@@ -54,4 +54,4 @@ const Create = ({onCreate, focus = false, placeholder = ""}) => {
         />
     );
 }
-export default Create;
+

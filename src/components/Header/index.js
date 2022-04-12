@@ -23,7 +23,7 @@ function ElevationScroll(props) {
         elevation: trigger ? 4 : 0,
     });
 }
-const Header = ({ props }) => {
+export default function Header({ props }){
     const show = false;
 /*    const { name, loading, loginLoading } = Selector(NAMESPACES.USER)
     const onLogout =() => {
@@ -52,4 +52,4 @@ const Header = ({ props }) => {
         </ElevationScroll>
     );
 }
-export default Header;
+

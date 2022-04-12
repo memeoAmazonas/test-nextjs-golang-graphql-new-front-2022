@@ -13,7 +13,7 @@ import {LOGGED} from "graphql/query/user";
 import Create from "components/comment/Create";
 import Stack from "@mui/material/Stack";
 import Avatar from "components/Avatar";
-import client from "../../graphql/client";
+import client from "../../src/graphql/client";
 
 export default function Home() {
     const {data: user } = useQuery(LOGGED);
@@ -45,7 +45,7 @@ export default function Home() {
                     }
                 }
             });
-            const actual = localPost ? [localData.CreatePost, ...localPost.localPost  ] : [localData.CreatePost];
+            const actual = [localData.CreatePost, ...localPost.localPost  ] ;
             client.cache.writeQuery({
                 query: LOCAL_POST,
                 data: {

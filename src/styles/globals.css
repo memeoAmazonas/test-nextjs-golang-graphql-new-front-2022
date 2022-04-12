@@ -21,7 +21,7 @@ body {
 }
 .content-login{
   min-height: 91.2vh;
-  background-image: url("https://www.mundomar.es/wp-content/themes/mundomar/assets/images/home/tucans.png"),url("https://www.mundomar.es/wp-content/themes/mundomar/assets/images/home/home-quicklink-3-parrot-bg.png") ;
+  background-image: url("../../public/tucans.png"),url("../../public/guacamaya.png") ;
   background-repeat: no-repeat;
   background-position: top, bottom;
   background-size: contain;

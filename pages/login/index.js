@@ -8,14 +8,13 @@ import Content from "components/Content";
 import Link from "components/Button/Link";
 import Toast from "components/Toast";
 
-
 import Classes from "styles/page/login";
 import {useLazyQuery, useQuery} from "@apollo/client";
-import {CREATE_USER, LOGGED, LOGIN} from "../../graphql/query/user";
+import {CREATE_USER, LOGGED, LOGIN} from "graphql/query/user";
 import {useRouter} from "next/router";
 import React from "react";
 import {isLength} from "validator";
-import client from "../../graphql/client";
+import client from "graphql/client";
 
 export default function Login() {
     const {data: user} = useQuery(LOGGED)
@@ -99,7 +98,7 @@ export default function Login() {
                     }
                 }
             } catch (e) {
-                setData('An error has occurred, please try again later.');
+                setData('An error has occurred, please try again later.', e);
             }
         } else {
             try {

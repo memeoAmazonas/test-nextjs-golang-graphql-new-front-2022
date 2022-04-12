@@ -2,9 +2,9 @@ FROM node:14-alpine
 
 WORKDIR /usr/frontend
 
-COPY package.json package-lock.json ./
+COPY package.json ./
 
-RUN npm ci
+RUN npm install
 
 COPY . .
 

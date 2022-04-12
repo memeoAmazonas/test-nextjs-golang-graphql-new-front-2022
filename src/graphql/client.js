@@ -12,7 +12,7 @@ const cache = new InMemoryCache();
 });*/
 
 const client = new ApolloClient({
-    uri: "http://localhost:3200/query",
+    uri: "http://localhost:3201/query",
     cache,
 });
 

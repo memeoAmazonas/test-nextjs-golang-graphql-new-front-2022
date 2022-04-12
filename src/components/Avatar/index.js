@@ -5,7 +5,7 @@ const sx ={
     height: 25,
     width: 25,
 }
-const Avatar = ({ name }) => {
+export default function Avatar({ name }){
     if (name) {
         return (
             <Av sx={sx}>
@@ -17,4 +17,3 @@ const Avatar = ({ name }) => {
         <Av sx={sx} />
     );
 }
-export default Avatar;
