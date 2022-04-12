@@ -22,10 +22,18 @@ export default function Home() {
     React.useEffect(()=>{
         if (!user) router.push("/");
     },[user, router])
-    const {data, error, loading} = useQuery(GET_ALL_POST, {
-        pollInterval: 500,
-    });
+    const {data, error, loading} = useQuery(GET_ALL_POST);
     const [onCreate,{}] = useLazyQuery(CREATE_POST);
+    React.useEffect(()=>{
+        if (!localPost && data){
+            client.cache.writeQuery({
+                query: LOCAL_POST,
+                data: {
+                    localPost: data.Posts
+                }
+            });
+        }
+    },[data])
     const OnCreatePost = async (body) =>{
         try {
             const {data: localData } = await onCreate({
@@ -37,14 +45,14 @@ export default function Home() {
                     }
                 }
             });
-            const actual = localPost ? [...localPost.localPost, localData.CreatePost ] : [localData.CreatePost];
+            const actual = localPost ? [localData.CreatePost, ...localPost.localPost  ] : [localData.CreatePost];
             client.cache.writeQuery({
                 query: LOCAL_POST,
                 data: {
                     localPost: actual
                 }
             });
-
+            console.info("post created")
         }catch (e) {
             console.log(e)
         }
@@ -59,8 +67,7 @@ export default function Home() {
             </Content>
         )
     }
-     if (data) {
-         const list = localPost ? (localPost.localPost).concat(data.Posts) : data.Posts;
+     if (localPost) {
             return (
                 <Content>
                     <Card elevation={2} sx={{minHeight: 100, pt: 0, mb: 1.6, bgcolor: (t) => t.palette.bgView.main}}>
@@ -70,7 +77,7 @@ export default function Home() {
                     <Create placeholder={`What's on your mind, ${user.name}?`} onCreate={(value) => OnCreatePost(value)} />
                     </Stack>
                     </Card>
-                    {list.map((item) => (
+                    {localPost.localPost.map((item) => (
                             <Post
                                 author={item.user.name}
                                 body={item.body}
@@ -79,6 +86,8 @@ export default function Home() {
                                 id={item.id.toString()}
                                 quantity={item.comments}
                                 name={user ? user.name : ""}
+                                userId={user.id}
+                                likes={item.likes !== 0 ? item.likes : null }
                             />
                         )
                     )}

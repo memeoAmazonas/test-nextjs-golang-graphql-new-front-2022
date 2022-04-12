@@ -5,15 +5,16 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import ShareIcon from '@mui/icons-material/Share';
 
-const Buttons = ({onFocus}) => {
+const Buttons = ({onFocus, likes, onLike}) => {
     return (
         <Stack sx={{pb: 1}}>
             <Divider color="primary" sx={{mb: 1}}/>
             <Stack justifyContent="center" direction="row" spacing={2}>
                 <IconButton
+                    extra={likes}
                     title="Like"
                     icon={<ThumbUpIcon fontSize="small"/>}
-                    onClick={() => null}
+                    onClick={onLike}
                 />
                 <IconButton title="Comment"
                             icon={<ChatBubbleOutlineIcon/>}

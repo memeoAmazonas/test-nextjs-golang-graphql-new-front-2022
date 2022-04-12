@@ -7,6 +7,7 @@ const GET_ALL_POST = gql`
             title
             body
             comments
+            likes
             user {
                 name
             }
@@ -23,6 +24,7 @@ const CREATE_POST = gql`query ($input: NewPost!){
         body
         comments
         id
+        likes
     }
 }`
 const LOCAL_POST = gql` query getCreatedPost {
