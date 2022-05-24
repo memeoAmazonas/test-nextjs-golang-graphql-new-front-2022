@@ -22,7 +22,7 @@ export default function Login() {
 
     React.useEffect(()=>{
         if (user) router.push("/home")
-    },[router, user]);
+    },[user]);
 
     const [name, setName] = React.useState('');
     const [email, setEmail] = React.useState('');
@@ -45,7 +45,6 @@ export default function Login() {
             email,
         },
     });
-
     React.useEffect(() => {
         if (open) {
             const timeout = setTimeout(() => {
@@ -78,8 +77,7 @@ export default function Login() {
         setSv('error');
     }
 
-    async function onSend() {
-
+    const onSend = async ()=> {
         if (register) {
             try {
                 const {data} = await toRegister();
@@ -126,7 +124,6 @@ export default function Login() {
         setEmail('');
         setRegister(!register);
     }
-
     return(
         <Content>
             <Stack className="content-login">
